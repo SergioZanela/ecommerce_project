@@ -78,8 +78,7 @@ Cart is session-based.
 Orders store **product snapshots** to ensure historical accuracy even if products are edited later.
 
 ---
-
-## 📁 Project Structure
+# 📁 Project Structure
 
 ecommerce_project/
 │
@@ -118,7 +117,6 @@ ecommerce_project/
 │ ├── vendor/
 │ └── cart/
 └── orders/
-
 ---
 
 # ⚙ Installation
