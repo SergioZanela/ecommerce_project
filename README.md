@@ -78,8 +78,9 @@ Cart is session-based.
 Orders store **product snapshots** to ensure historical accuracy even if products are edited later.
 
 ---
-# 📁 Project Structure
+## 📁 Project Structure
 
+```text
 ecommerce_project/
 │
 ├── manage.py
@@ -87,36 +88,38 @@ ecommerce_project/
 ├── README.md
 │
 ├── ecommerce_project/
-│ ├── settings.py
-│ ├── urls.py
-│ └── ...
+│   ├── settings.py
+│   ├── urls.py
+│   └── ...
 │
 └── shop/
-├── models.py
-├── views_auth.py
-├── views_public_products.py
-├── views_public_stores.py
-├── views_vendor_products.py
-├── views_vendor_stores.py
-├── views_cart.py
-├── views_orders.py
-├── views_password_reset.py
-├── forms.py
-├── permissions.py
-├── tests.py
-│
-├── static/
-│ └── shop/
-│ └── style.css
-│
-└── templates/
-├── base.html
-├── auth/
-├── shop/
-│ ├── public/
-│ ├── vendor/
-│ └── cart/
-└── orders/
+    ├── models.py
+    ├── views_auth.py
+    ├── views_public_products.py
+    ├── views_public_stores.py
+    ├── views_vendor_products.py
+    ├── views_vendor_stores.py
+    ├── views_cart.py
+    ├── views_orders.py
+    ├── views_password_reset.py
+    ├── forms.py
+    ├── permissions.py
+    ├── tests.py
+    │
+    ├── static/
+    │   └── shop/
+    │       └── style.css
+    │
+    └── templates/
+        ├── base.html
+        ├── auth/
+        ├── shop/
+        │   ├── public/
+        │   ├── vendor/
+        │   └── cart/
+        └── orders/
+```
+
 ---
 
 # ⚙ Installation
