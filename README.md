@@ -79,7 +79,7 @@ Orders store **product snapshots** to ensure historical accuracy even if product
 
 ---
 
-# 📁 Project Structure
+## 📁 Project Structure
 
 ecommerce_project/
 │
@@ -118,7 +118,6 @@ ecommerce_project/
 │ ├── vendor/
 │ └── cart/
 └── orders/
-
 
 ---
 
