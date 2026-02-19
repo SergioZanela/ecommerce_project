@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+  <h1>Products</h1>
+  <p class="badge">Store: {{ store.name }}</p>
+
+  <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+    <a class="btn" href="{% url 'vendor_store_list' %}">← Back to Stores</a>
+    <a class="btn" href="{% url 'vendor_product_create' store.id %}">➕ Create Product</a>
+  </div>
+
+  {% if products %}
+    <ul class="list" style="margin-top:12px;">
+      {% for p in products %}
+        <li class="item">
+          <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+            <div>
+              <strong>{{ p.name }}</strong>
+              {% if not p.is_active %}<span class="badge">Inactive</span>{% endif %}
+              <div class="badge" style="margin-top:8px;">${{ p.price }}</div>
+              <div style="margin-top:8px; color: var(--muted);">{{ p.description }}</div>
+            </div>
+
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <a class="btn" href="{% url 'vendor_product_edit' store.id p.id %}">✏ Edit</a>
+              <a class="btn btn-danger" href="{% url 'vendor_product_delete' store.id p.id %}">🗑 Delete</a>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No products yet.</p>
+  {% endif %}
+{% endblock %}

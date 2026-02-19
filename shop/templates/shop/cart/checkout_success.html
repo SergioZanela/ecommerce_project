@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Order Complete{% endblock %}
+
+{% block content %}
+  <h1>Order Complete ✅</h1>
+  <p class="badge">Order #{{ order.id }}</p>
+
+  <h2 style="margin-top:18px;">Items</h2>
+
+  {% if order_items %}
+    <ul class="list">
+      {% for item in order_items %}
+        <li class="item">
+          <strong>{{ item.product_name_snapshot }}</strong>
+          <div class="badge" style="margin-top:8px;">
+            Qty: {{ item.quantity }} • Price: ${{ item.price_snapshot }}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+    <a class="btn" href="{% url 'public_store_list' %}">Back to stores</a>
+    <a class="btn" href="{% url 'home' %}">Home</a>
+  </div>
+{% endblock %}

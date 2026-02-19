@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Stores{% endblock %}
+
+{% block content %}
+  <h1>Stores</h1>
+  <p class="badge">Pick a store to see products.</p>
+
+  {% if stores %}
+    <ul class="list" style="margin-top:12px;">
+      {% for store in stores %}
+        <li class="item">
+          <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+            <div>
+              <strong>{{ store.name }}</strong><br />
+              <span class="badge">{{ store.owner.username }}</span>
+            </div>
+            <div>
+              <a class="btn" href="{% url 'public_store_detail' store.id %}">View</a>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No stores available.</p>
+  {% endif %}
+{% endblock %}

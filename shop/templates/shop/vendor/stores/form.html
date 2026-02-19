@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Store{% endblock %}
+
+{% block content %}
+  <h1>{{ title|default:"Store" }}</h1>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="form-row">
+      <label>Name</label>
+      {{ form.name }}
+    </div>
+
+    <div class="form-row">
+      <label>Description</label>
+      {{ form.description }}
+    </div>
+
+    <button class="btn" type="submit">Save</button>
+    <a class="btn" href="{% url 'vendor_store_list' %}">Cancel</a>
+  </form>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}My Orders{% endblock %}
+
+{% block content %}
+  <h1>My Orders</h1>
+  <p class="badge">Your purchase history</p>
+
+  {% if orders %}
+    <ul class="list" style="margin-top:12px;">
+      {% for order in orders %}
+        <li class="item">
+          <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+            <div>
+              <strong>Order #{{ order.id }}</strong><br/>
+              <span class="badge">
+                {{ order.created_at|date:"Y-m-d H:i" }}
+              </span>
+            </div>
+
+            <div class="badge">
+              Items: {{ order.items.count }}
+            </div>
+          </div>
+
+          <div style="margin-top:10px;">
+            <ul style="margin:0; padding-left:18px;">
+              {% for item in order.items.all %}
+                <li>
+                  {{ item.product_name_snapshot }}
+                  (x{{ item.quantity }})
+                  — ${{ item.price_snapshot }}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>You haven’t placed any orders yet.</p>
+  {% endif %}
+{% endblock %}

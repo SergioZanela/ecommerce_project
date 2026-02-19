@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}My Stores{% endblock %}
+
+{% block content %}
+  <h1>My Stores</h1>
+
+  <!-- 📊 Vendor Stats -->
+  <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+    <span class="badge">Total stores: {{ total_stores }}</span>
+    <span class="badge">Total products: {{ total_products }}</span>
+  </div>
+
+  <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+    <a class="btn" href="{% url 'vendor_store_create' %}">➕ Create new store</a>
+    <a class="btn" href="{% url 'home' %}">Home</a>
+  </div>
+
+  {% if stores %}
+    <ul class="list" style="margin-top:12px;">
+      {% for store in stores %}
+        <li class="item">
+          <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+            <div>
+              <strong>{{ store.name }}</strong><br/>
+              <span class="badge">Products: {{ store.product_count }}</span>
+            </div>
+
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <a class="btn" href="{% url 'vendor_product_list' store.id %}">📦 Products</a>
+              <a class="btn" href="{% url 'vendor_store_edit' store.id %}">✏ Edit</a>
+              <a class="btn btn-danger" href="{% url 'vendor_store_delete' store.id %}">🗑 Delete</a>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>You don't have any stores yet.</p>
+  {% endif %}
+{% endblock %}
